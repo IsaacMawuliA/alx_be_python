@@ -1,17 +1,19 @@
 # Prompt the user for task details
-task = input("What is your task for the day? ")
-priority = input("What is the priority of this task (high, medium, low)? ")
-time_bound = input("Is this task time-bound (yes or no)? ")
+task = input("Enter your task: ")
+priority = input("Priority (high/medium/low): ")
+time_bound = input("Is it time-bound? (yes/no): ")
 
 # Process the Task Based on Priority and Time Sensitivity
 print("Reminder:")
 match priority:
     case "high":
-        print(f"Priority task: {task}")
+        print(f"'{task}' is a high priority task", end=" ")
     case "medium":
-        print(f"Task: {task}")
+        print(f"'{task}' is a medium priority task", end=" ")
     case "low":
-        print(f"Low priority task: {task}")
+        print(f"'{task}' is a low priority task", end=" ")
 
 if time_bound == "yes":
-    print("This task is time-bound and requires immediate attention today!")
+    print("that requires immediate attention today!")
+else:
+    print("Consider completing it when you have free time.")
