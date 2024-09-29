@@ -1,12 +1,7 @@
-```python
 # Global conversion factors
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
-```
 
-Next, we'll implement the conversion functions as per the requirements:
-
-```python
 # Function to convert temperature to Celsius
 def convert_to_celsius(fahrenheit):
     global FAHRENHEIT_TO_CELSIUS_FACTOR
@@ -16,11 +11,7 @@ def convert_to_celsius(fahrenheit):
 def convert_to_fahrenheit(celsius):
     global CELSIUS_TO_FAHRENHEIT_FACTOR
     return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
-```
 
-Now, let's add the user interaction part where we prompt the user to enter a temperature and specify the unit:
-
-```python
 # User interaction
 try:
     temperature = float(input("Enter the temperature to convert: "))
@@ -37,4 +28,4 @@ try:
 
 except ValueError as e:
     print(e)
-```
+
