@@ -1,27 +1,33 @@
 # bank_account.py
 
 class BankAccount:
-    def __init__(self, initial_balance=0):
-        self._balance = initial_balance  # Protected attribute
+    def __init__(self, balance=0):
+        self._balance = balance
 
     def deposit(self, amount):
         if amount > 0:
             self._balance += amount
-        else:
-            print("Deposit amount must be positive.")
-
-class BankAccount:
-    def __init__(self, balance=0):
-        self._balance = balance
-
-    def withdraw(self, amount):
-        if amount > 0 and amount <= self._balance:
-            self._balance -= amount
-            print(f"Withdrew: ${amount:.1f}") # Ensure one decimal place
+            print(f"Deposited: ${amount:.1f}")
             return True
         else:
-            print("Insufficient funds.")
+            print("Deposit amount must be positive.")
             return False
+
+    def withdraw(self, amount):
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+            print(f"Withdrew: ${amount:.1f}")
+            return True
+        else:
+            print("Withdrawal amount must be positive and less than or equal to the balance.")
+            return False
+
+def main():
+    account = BankAccount(100.0)  # Starting with a balance of $100
+    account.withdraw(50.0)  # This will withdraw $50 from the account
+
+if __name__ == "__main__":
+    main()
 
     def display_balance(self):
         print(f"Current Balance: ${self._balance:.2f}")
