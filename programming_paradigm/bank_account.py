@@ -1,71 +1,60 @@
-```
-import sys
+bank_account.py:
 
+```
 class BankAccount:
     def __init__(self, initial_balance=0):
         self.account_balance = initial_balance
 
     def deposit(self, amount):
-        if amount > 0:
-            self.account_balance += amount
-            print(f"Deposited: ${amount:.2f}. New balance: ${self.account_balance:.2f}.")
-        else:
-            print("Deposit amount must be positive.")
+        self.account_balance += amount
 
     def withdraw(self, amount):
-        if amount > 0 and amount <= self.account_balance:
-            self.account_balance -= amount
-            print(f"Withdrew: ${amount:.2f}. New balance: ${self.account_balance:.2f}.")
-            return True
-        else:
-            print("Insufficient funds or invalid amount.")
+        if amount > self.account_balance:
             return False
+        else:
+            self.account_balance -= amount
+            return True
 
     def display_balance(self):
         print(f"Current balance: ${self.account_balance:.2f}")
+```
 
-if __name__ == "__main__":
-    account = BankAccount()
+main-0.py:
 
-    if len(sys.argv) != 2:
-        print("Usage: python main-0.py [command:amount|display]")
+```
+import sys
+from bank_account import BankAccount
+
+def main():
+    account = BankAccount(100)  # Example starting balance
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
         sys.exit(1)
 
-    command = sys.argv[1]
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
 
-    if command.startswith("deposit:"):
-        try:
-            amount = float(command.split(":")[1])
-            account.deposit(amount)
-        except ValueError:
-            print("Invalid amount.")
-    elif command.startswith("withdraw:"):
-        try:
-            amount = float(command.split(":")[1])
-            account.withdraw(amount)
-        except ValueError:
-            print("Invalid amount.")
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount}")
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount}")
+        else:
+            print("Insufficient funds.")
     elif command == "display":
         account.display_balance()
     else:
-        print("Unknown command.")
+        print("Invalid command.")
+
+if __name__ == "__main__":
+    main()
 ```
 
-### Explanation:
-- This script defines a `BankAccount` class with methods for depositing, withdrawing, and displaying the balance.
-- The command line interface is integrated into the `if __name__ == "__main__":` block, allowing users to interact with the account via command line arguments.
-- The script checks for valid commands and handles amounts accordingly.
+In this implementation:
 
-### Command Line Usage:
-- To deposit $50: 
-  ```
-  python main-0.py deposit:50
-  ```
-- To withdraw $20 (if sufficient funds are available):
-  ```
-  python main-0.py withdraw:20
-  ```
-- To display the current balance:
-  ```
-  python main-0.py display
-  ```
+- The `BankAccount` class encapsulates the account balance and operations like deposit, withdraw, and display balance.
+- The `main-0.py` script uses command line arguments to perform operations on the `BankAccount` instance, allowing for interaction directly from the command line.
+
+
