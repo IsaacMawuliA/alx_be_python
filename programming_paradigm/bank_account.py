@@ -4,37 +4,27 @@ class BankAccount:
     def __init__(self, initial_balance=0):
         self.__account_balance = initial_balance  # Private variable for account balance
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.__account_balance += amount
-            print(f"Deposited: ${amount:.2f}")
-        else:
-            print("Deposit amount must be positive.")
+   def deposit(self, amount):
+    if amount > 0:
+        self.__account_balance += amount
+        print(f"Deposited: ${amount:.1f}")
+        print(f"Current Balance: ${self.__account_balance:.1f}")  # Print balance once
+        return True  # Indicate success
+    return False  # Indicate failure
 
-    def withdraw(self, amount):
-        if amount <= 0:
-            print("Withdrawal amount must be positive.")
-            return False
-        elif amount > self.__account_balance:
-            print("Insufficient funds.")
-            return False
-        else:
-            self.__account_balance -= amount
-            print(f"Withdrew: ${amount:.2f}")
-            return True
+def withdraw(self, amount):
+    if amount > 0 and amount <= self.__account_balance:
+        self.__account_balance -= amount
+        print(f"Withdrew: ${amount:.1f}")
+        print("Withdrawal successful.")
+        print(f"Current Balance: ${self.__account_balance:.1f}")  # Print balance once
+        return True  # Indicate success
+    else:
+        print("Insufficient funds.")
+    return False  # Indicate failure
 
     def display_balance(self):
         print(f"Current Balance: ${self.__account_balance:.2f}")
-
-# Example usage:
-account = BankAccount(100)  # Starting with $100
-account.deposit(50)          # Depositing $50
-if account.withdraw(20):      # Withdrawing $20
-    print("Withdrawal successful.")
-else:
-    print("Withdrawal failed.")
-account.display_balance()     # Displaying current balance
-
 
 # main-0.py
 
