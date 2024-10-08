@@ -9,15 +9,16 @@ def deposit(self, amount):
         print("Invalid amount.")
     else:
         self.__account_balance += amount
-        print(f"Deposited: ${amount:.2f}")
+        print(f"Deposited: ${amount:.1f}")
 
-    def withdraw(self, amount):
-        if 0 < amount <= self.__account_balance:
-            self.__account_balance -= amount
-            return True
-        else:
-            print("Insufficient funds.")
-            return False
+def withdraw(self, amount):
+    if amount <= 0:
+        print("Invalid amount.")
+    elif amount > self.__account_balance:
+        print("Insufficient funds.")
+    else:
+        self.__account_balance -= amount
+        print(f"Withdrew: ${amount:.1f}")
 
     def display_balance(self):
         print(f"Current Balance: ${self.__account_balance:.2f}")
