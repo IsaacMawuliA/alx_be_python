@@ -5,47 +5,12 @@ class BankAccount:
         self._balance = balance
 
     def deposit(self, amount):
-        if amount > 0:
-            self._balance += amount
-            print(f"Deposited: ${amount:.1f}")
-            return True
-        else:
+        if amount <= 0:
             print("Deposit amount must be positive.")
             return False
-
-def main():
-    account = BankAccount(0.0)  # Starting with a balance of $0
-    account.deposit(67.0)  # This should only deposit once
-
-if __name__ == "__main__":
-    main()
-
-class BankAccount:
-    def __init__(self, balance=0):
-        self._balance = balance
-
-    def withdraw(self, amount):
-        if amount <= 0:
-            print("Withdrawal amount must be positive.")
-            return False
-        if amount > self._balance:
-            print("Insufficient funds.")
-            return False
-        self._balance -= amount
-        print(f"Withdrew: ${amount:.1f}")
+        self._balance += amount
+        print(f"Deposited: ${amount:.1f}")
         return True
-
-def main():
-    account = BankAccount(100.0)  # Starting with a balance of $100
-    account.withdraw(50.0)  # This should only withdraw once
-
-if __name__ == "__main__":
-    main()
-
-
-class BankAccount:
-    def __init__(self, balance=0):
-        self._balance = balance
 
     def withdraw(self, amount):
         if amount <= 0:
@@ -57,39 +22,6 @@ class BankAccount:
         self._balance -= amount
         print(f"Withdrew: ${amount:.1f}")
         return True
-
-def main():
-    account = BankAccount(100.0)  # Starting with a balance of $100
-    account.withdraw(150.0)  # This should trigger "Insufficient funds."
-
-if __name__ == "__main__":
-    main()
-
-
-class BankAccount:
-    def __init__(self, balance=0):
-        self._balance = balance
-
-    def withdraw(self, amount):
-        if amount <= 0:
-            print("Withdrawal amount must be positive.")
-            return False
-        elif amount > self._balance:
-            print("Insufficient funds.")
-            return False
-        self._balance -= amount
-        print(f"Withdrew: ${amount:.1f}")
-        return True
-
-    def display_balance(self):
-        print(f"Current Balance: ${self._balance:.2f}")
-
-def main():
-    account = BankAccount(250.0)  # Starting with a balance of $250
-    account.display_balance()  # This will now work and display the balance
-
-if __name__ == "__main__":
-    main()
 
     def display_balance(self):
         print(f"Current Balance: ${self._balance:.2f}")
