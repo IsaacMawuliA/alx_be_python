@@ -1,4 +1,6 @@
-bank_account.py:
+### bank_account.py
+
+This script will define the `BankAccount` class with the necessary methods.
 
 ```
 class BankAccount:
@@ -6,55 +8,58 @@ class BankAccount:
         self.account_balance = initial_balance
 
     def deposit(self, amount):
-        self.account_balance += amount
+        if amount > 0:
+            self.account_balance += amount
+            print(f"Deposited: ${amount:.2f}")
+        else:
+            print("Deposit amount must be positive.")
 
     def withdraw(self, amount):
-        if amount > self.account_balance:
-            return False
-        else:
+        if amount > 0 and amount <= self.account_balance:
             self.account_balance -= amount
+            print(f"Withdrew: ${amount:.2f}")
             return True
+        else:
+            print("Insufficient funds or invalid amount.")
+            return False
 
     def display_balance(self):
         print(f"Current balance: ${self.account_balance:.2f}")
 ```
 
-main-0.py:
+### main-0.py
 
-```
+This script will interface with the `BankAccount` class using command line arguments.
+
+```python
 import sys
 from bank_account import BankAccount
 
 def main():
-    account = BankAccount(100)  # Example starting balance
-    if len(sys.argv) < 2:
-        print("Usage: python main.py <command>:<amount>")
-        print("Commands: deposit, withdraw, display")
-        sys.exit(1)
+    account = BankAccount()
 
-    command, *params = sys.argv[1].split(':')
-    amount = float(params[0]) if params else None
+    while True:
+        print("\nOptions: deposit, withdraw, display, exit")
+        action = input("Enter action: ").strip().lower()
 
-    if command == "deposit" and amount is not None:
-        account.deposit(amount)
-        print(f"Deposited: ${amount}")
-    elif command == "withdraw" and amount is not None:
-        if account.withdraw(amount):
-            print(f"Withdrew: ${amount}")
+        if action == "deposit":
+            amount = float(input("Enter amount to deposit: "))
+            account.deposit(amount)
+        
+        elif action == "withdraw":
+            amount = float(input("Enter amount to withdraw: "))
+            account.withdraw(amount)
+        
+        elif action == "display":
+            account.display_balance()
+        
+        elif action == "exit":
+            print("Exiting...")
+            break
+        
         else:
-            print("Insufficient funds.")
-    elif command == "display":
-        account.display_balance()
-    else:
-        print("Invalid command.")
+            print("Invalid action. Please try again.")
 
 if __name__ == "__main__":
     main()
 ```
-
-In this implementation:
-
-- The `BankAccount` class encapsulates the account balance and operations like deposit, withdraw, and display balance.
-- The `main-0.py` script uses command line arguments to perform operations on the `BankAccount` instance, allowing for interaction directly from the command line.
-
-
