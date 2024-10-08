@@ -15,11 +15,12 @@ class BankAccount:
             self._balance -= amount
             return True
         else:
-            print("Insufficient funds or invalid amount.")
+            if amount > self._balance:
+               print("Insufficient funds.")
             return False
 
     def display_balance(self):
-        print(f"Current Balance: ${self._balance}")
+        print(f"Current Balance: ${self._balance:.2f}")
 
 
 # main-0.py
@@ -52,4 +53,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
