@@ -10,7 +10,7 @@ class BankAccount:
             return False  # Indicates deposit failed
         else:
             self.__account_balance += amount
-            print(f"We deposited: ${amount:.2f}")
+            print(f"We deposited: ${amount:.1f}")
             return True  # Indicates deposit was successful
 
     def withdraw(self, amount):
@@ -22,7 +22,7 @@ class BankAccount:
             return False  # Indicates withdrawal failed
         else:
             self.__account_balance -= amount
-            print(f"We withdrew: ${amount:.2f}")
+            print(f"Withdrew: ${amount:.1f}")
             return True  # Indicates withdrawal was successful
 
     def display_balance(self):
