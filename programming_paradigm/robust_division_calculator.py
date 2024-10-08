@@ -1,22 +1,19 @@
-```
 def safe_divide(numerator, denominator):
     try:
         # Attempt to convert inputs to floats
         num = float(numerator)
-        den = float(denominator)
+        denom = float(denominator)
         
-        # Perform the division
-        result = num / den
-        return f"The result of the division is {result:.2f}"
-    
+        # Perform division
+        result = num / denom
+        return f"The result of the division is {result}"
+        
     except ZeroDivisionError:
         return "Error: Cannot divide by zero."
-    
     except ValueError:
         return "Error: Please enter numeric values only."
-```
 
-```
+
 import sys
 from robust_division_calculator import safe_divide
 
@@ -33,4 +30,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+
