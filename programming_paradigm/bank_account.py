@@ -1,4 +1,3 @@
-```
 # bank_account.py
 
 class BankAccount:
@@ -21,12 +20,9 @@ class BankAccount:
 
     def display_balance(self):
         print(f"Current Balance: ${self._balance}")
-```
 
 
-### main-0.py
-
-```
+# main-0.py
 
 import sys
 from bank_account import BankAccount
@@ -56,7 +52,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-```
-
 
