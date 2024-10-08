@@ -10,14 +10,18 @@ class BankAccount:
         else:
             print("Deposit amount must be positive.")
 
-def withdraw(self, amount):
-    if amount > 0 and amount <= self._balance:
-        self._balance -= amount
-        print(f"Withdrew: ${amount:.1f}")  # Ensure one decimal place
-        return True
-    elif amount > 0:
-        print("Insufficient funds.")
-        return False
+class BankAccount:
+    def __init__(self, balance=0):
+        self._balance = balance
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self._balance:
+            self._balance -= amount
+            print(f"Withdrew: ${amount:.1f}") # Ensure one decimal place
+            return True
+        else:
+            print("Insufficient funds.")
+            return False
 
     def display_balance(self):
         print(f"Current Balance: ${self._balance:.2f}")
