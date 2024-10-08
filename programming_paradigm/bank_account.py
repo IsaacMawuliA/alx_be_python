@@ -13,18 +13,80 @@ class BankAccount:
             print("Deposit amount must be positive.")
             return False
 
+def main():
+    account = BankAccount(0.0)  # Starting with a balance of $0
+    account.deposit(67.0)  # This should only deposit once
+
+if __name__ == "__main__":
+    main()
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self._balance = balance
+
     def withdraw(self, amount):
-        if 0 < amount <= self._balance:
-            self._balance -= amount
-            print(f"Withdrew: ${amount:.1f}")
-            return True
-        else:
-            print("Withdrawal amount must be positive and less than or equal to the balance.")
+        if amount <= 0:
+            print("Withdrawal amount must be positive.")
             return False
+        if amount > self._balance:
+            print("Insufficient funds.")
+            return False
+        self._balance -= amount
+        print(f"Withdrew: ${amount:.1f}")
+        return True
 
 def main():
     account = BankAccount(100.0)  # Starting with a balance of $100
-    account.withdraw(50.0)  # This will withdraw $50 from the account
+    account.withdraw(50.0)  # This should only withdraw once
+
+if __name__ == "__main__":
+    main()
+
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self._balance = balance
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Withdrawal amount must be positive.")
+            return False
+        elif amount > self._balance:
+            print("Insufficient funds.")
+            return False
+        self._balance -= amount
+        print(f"Withdrew: ${amount:.1f}")
+        return True
+
+def main():
+    account = BankAccount(100.0)  # Starting with a balance of $100
+    account.withdraw(150.0)  # This should trigger "Insufficient funds."
+
+if __name__ == "__main__":
+    main()
+
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self._balance = balance
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Withdrawal amount must be positive.")
+            return False
+        elif amount > self._balance:
+            print("Insufficient funds.")
+            return False
+        self._balance -= amount
+        print(f"Withdrew: ${amount:.1f}")
+        return True
+
+    def display_balance(self):
+        print(f"Current Balance: ${self._balance:.2f}")
+
+def main():
+    account = BankAccount(250.0)  # Starting with a balance of $250
+    account.display_balance()  # This will now work and display the balance
 
 if __name__ == "__main__":
     main()
