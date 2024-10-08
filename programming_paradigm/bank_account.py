@@ -10,19 +10,11 @@ class BankAccount:
         else:
             print("Deposit amount must be positive.")
 
-is_withdrawing = False
-
     def withdraw(self, amount):
-        global is_withdrawing
-        if is_withdrawing:
-           return  # Prevent multiple withdrawals
-
         if amount > 0 and amount <= self._balance:
-            is_withdrawing = True
             self._balance -= amount
-            print(f"Withdrew: ${amount:.1f}")
-            is_withdrawing = False  # Reset after the transaction
-           return True
+            print(f"Withdrew: ${amount:.2f}")
+            return True
         elif amount > 0:
             print("Insufficient funds.")
             return False
