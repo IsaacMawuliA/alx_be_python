@@ -55,3 +55,17 @@ if __name__ == "__main__":
 - This script defines a `BankAccount` class with methods for depositing, withdrawing, and displaying the balance.
 - The command line interface is integrated into the `if __name__ == "__main__":` block, allowing users to interact with the account via command line arguments.
 - The script checks for valid commands and handles amounts accordingly.
+
+### Command Line Usage:
+- To deposit $50: 
+  ```
+  python main-0.py deposit:50
+  ```
+- To withdraw $20 (if sufficient funds are available):
+  ```
+  python main-0.py withdraw:20
+  ```
+- To display the current balance:
+  ```
+  python main-0.py display
+  ```
