@@ -1,5 +1,3 @@
-### bank_account.py
-
 ```
 class BankAccount:
     def __init__(self, initial_balance=0):
@@ -29,6 +27,64 @@ if __name__ == "__main__":
     account = BankAccount()
     account.display_balance()
 ```
+
+```
+
+# Initialize the current balance
+current_balance = 0
+
+def deposit(amount):
+    global current_balance
+    current_balance += amount
+    print(f"Deposited: ${amount}")
+    print_balance()
+
+def withdraw(amount):
+    global current_balance
+    if amount <= current_balance:
+        current_balance -= amount
+        print(f"Withdrew: ${amount}")
+    else:
+        print("Insufficient funds!")
+    print_balance()
+
+def print_balance():
+    print(f"Current Balance: ${current_balance}")
+
+# Example usage
+if __name__ == "__main__":
+    deposit(50)  # Deposit $50
+    withdraw(20)  # Withdraw $20
+    withdraw(40)  # Attempt to withdraw $40 (should show insufficient funds)
+```
+
+When you run this script, you should see the following output:
+
+```
+Deposited: $50
+Current Balance: $50
+Withdrew: $20
+Current Balance: $30
+Insufficient funds!
+Current Balance: $30
+```
+
+To check for the correct output when attempting to withdraw more than the current balance, you can use the updated script provided earlier. 
+
+If you run the script and attempt to withdraw an amount greater than what you have, for example:
+
+```python
+withdraw(150)  # Attempt to withdraw $150 when the balance is only $30
+```
+
+You should see the following output:
+
+```
+Insufficient funds!
+Current Balance: $30
+```
+
+This output confirms that the withdrawal function is correctly identifying that there are insufficient funds for the requested withdrawal and is handling it appropriately. If you have any other scenarios you'd like to test or need further help, just let me know!
 
 ### main-0.py
 
@@ -81,14 +137,3 @@ if __name__ == "__main__":
    - The `main-0.py` script takes command line arguments to perform operations on the `BankAccount` instance.
    - It checks the command (deposit, withdraw, or balance) and performs the corresponding action.
    - It provides usage instructions if the arguments are not correct.
-
-### Running the Code
-
-You can run the `main-0.py` script from the command line with the following commands:
-- To deposit: `python main-0.py deposit 100`
-- To withdraw: `python main-0.py withdraw 50`
-- To check balance: `python main-0.py balance`
-
-This setup will help you understand the fundamentals of OOP in Python while working with the `BankAccount` class.
-
-
