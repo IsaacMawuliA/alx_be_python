@@ -13,23 +13,23 @@ class TestSimpleCalculator(unittest.TestCase):
         self.assertEqual(self.calc.add(-1, 1), 0)
         self.assertEqual(self.calc.add(-1, -1), -2)
 
-    def test_subtract(self):
+    def test_subtraction(self):
         """Test the subtraction method."""
-        self.assertEqual(self.calc.sub(5, 3), 2)
-        self.assertEqual(self.calc.sub(0, 5), -5)
-        self.assertEqual(self.calc.sub(-1, -1), 0)
+        self.assertEqual(self.calc.subtract(5, 3), 2)
+        self.assertEqual(self.calc.subtract(0, 5), -5)
+        self.assertEqual(self.calc.subtract(-1, -1), 0)
 
     def test_multiply(self):
         """Test the multiplication method."""
-        self.assertEqual(self.calc.mul(3, 7), 21)
-        self.assertEqual(self.calc.mul(-1, 5), -5)
-        self.assertEqual(self.calc.mul(0, 10), 0)
+        self.assertEqual(self.calc.multiply(3, 7), 21)
+        self.assertEqual(self.calc.multiply(-1, 5), -5)
+        self.assertEqual(self.calc.multiply(0, 10), 0)
 
     def test_divide(self):
         """Test the division method."""
-        self.assertEqual(self.calc.div(10, 2), 5)
-        self.assertEqual(self.calc.div(5, 0), None)  # Test division by zero
-        self.assertEqual(self.calc.div(-10, 2), -5)
+        self.assertEqual(self.calc.divide(10, 2), 5)
+        self.assertEqual(self.calc.divide(5, 0), None)  # Test division by zero
+        self.assertEqual(self.calc.divide(-10, 2), -5)
 
 if __name__ == '__main__':
     unittest.main()
