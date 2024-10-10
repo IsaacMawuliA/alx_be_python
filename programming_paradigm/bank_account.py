@@ -18,7 +18,8 @@ class BankAccount:
             return False #Withdrawal failed
 
     def display_balance(self):
-        print(f"Current Balance: {self.__account_balance}")
+        print(f"Current Balance: ${self.__account_balance:.2f}")
+
 
 
 # main-0.py
